@@ -48,7 +48,8 @@ const makeMove = (event) => {
         event.target.classList.add('played')
         playerOneMoves.push(event.target.id)
     }
-    checkWin()
+    printWin(moveCounter, checkWin())
+
 }
 
 // Researched array includes method: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
@@ -56,30 +57,37 @@ const makeMove = (event) => {
 const checkWin = () => {
     for(i = 0; i < winConditions.length; i++) {
         if(isInCombo(playerOneMoves, winConditions[i]) === true) {
-            return printWin(true)
+            return true
         } else if (isInCombo(playerTwoMoves, winConditions[i]) === true) {
-            return printWin(false)
-        }
+            return false
+        } 
     }
+    return null
 }
     // if (playerOneMoves.includes('box-1') && playerOneMoves.includes('box-2') && playerOneMoves.includes('box-3')){
     //     console.log('player one wins!')
     // } else if (playerOneMoves.includes('box-4'))
     // }
 
-const printWin = (result) => {
-    const resultBox = document.createElement('div')
-    resultBox.id = 'result'
-    if (result === true) {
-        resultBox.textContent = "Player One Wins!"
-        resultBox.style.color = playerOneMarker
-    } else if (result === false) {
-        resultBox.textContent = "Player Two Wins!"
-        resultBox.style.color = playerTwoMarker
+const printWin = (moveCounter, result) => {
+    if (result === true | result === false | (result === null && moveCounter === 9)) {
+        const resultBox = document.createElement('div')
+        resultBox.id = 'result'
+        if (result === true) {
+            resultBox.textContent = "Player One Wins!"
+            resultBox.style.color = playerOneMarker
+        } else if (result === false) {
+            resultBox.textContent = "Player Two Wins!"
+            resultBox.style.color = playerTwoMarker
+        } else if (moveCounter === 9 && result === null) {
+            resultBox.textContent = "It's a Tie!"
+            resultBox.style.color = playerTwoMarker
+        }
+        divResult.appendChild(resultBox)
     }
+}  
 
-    divResult.appendChild(resultBox)
-}
+
 
 
 // To understand how to use contains method: https://www.javascripttutorial.net/dom/css/check-if-an-element-contains-a-class/
