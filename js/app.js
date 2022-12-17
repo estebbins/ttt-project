@@ -76,16 +76,25 @@ const printWin = (moveCounter, result) => {
         if (result === true) {
             resultBox.textContent = "Player One Wins!"
             resultBox.style.color = playerOneMarker
+            gameOver()
         } else if (result === false) {
             resultBox.textContent = "Player Two Wins!"
             resultBox.style.color = playerTwoMarker
+            gameOver()
         } else if (moveCounter === 9 && result === null) {
             resultBox.textContent = "It's a Tie!"
             resultBox.style.color = playerTwoMarker
+            gameOver()
         }
         divResult.appendChild(resultBox)
     }
 }  
+
+const gameOver = () => {
+    for (let i = 0; i < move.length; i++) {
+        move[i].classList.add('played')
+    }
+}
 
 
 
