@@ -11,6 +11,7 @@ body {
     border-radius: 5px;
     overflow: hidden;
     margin: 0 auto;
+    background-color: blue;
 }
 
 .column {
@@ -28,12 +29,6 @@ body {
     height: 148px; */
 }
 
-#box-1 {
-    background-color: red;
-}
-#box-3 {
-    background-color: blue;
-}
 
 #reset {
     display: flex;

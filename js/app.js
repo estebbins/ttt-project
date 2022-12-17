@@ -15,6 +15,10 @@ const playerOneMarker = 'pink'
 const playerTwoMarker = 'green'
 const playerOneMoves = []
 const playerTwoMoves = []
+let playerOneScore = 0
+let playerTwoScore = 0
+let tieScore = 0
+let playerOffset = 0
 let moveCounter = 0
 const winOne = ['box-1', 'box-2', 'box-3']
 const winTwo = ['box-4', 'box-5', 'box-6']
@@ -39,7 +43,7 @@ const makeMove = (event) => {
     // move[i].classList.add('player1')
 
     moveCounter++
-    if (moveCounter % 2 === 0) {
+    if (moveCounter % 2 === (0 + playerOffset)) {
         event.target.style.backgroundColor = playerTwoMarker
         event.target.classList.add('played')
         playerTwoMoves.push(event.target.id)
@@ -77,14 +81,17 @@ const printWin = (moveCounter, result) => {
             resultBox.textContent = "Player One Wins!"
             resultBox.style.color = playerOneMarker
             gameOver()
+            playerOneScore += 1
         } else if (result === false) {
             resultBox.textContent = "Player Two Wins!"
             resultBox.style.color = playerTwoMarker
             gameOver()
+            playerTwoScore += 1
         } else if (moveCounter === 9 && result === null) {
             resultBox.textContent = "It's a Tie!"
             resultBox.style.color = playerTwoMarker
             gameOver()
+            tieScore += 1
         }
         divResult.appendChild(resultBox)
     }
@@ -96,7 +103,48 @@ const gameOver = () => {
     }
 }
 
+const resetGame = () => {
+    newGame()
+    playerOneScore = 0
+    playerTwoScore = 0
+    tieScore = 0
+    playerOffset = 0
+}
 
+const newGame = () => {
+    for (let i = 0; i < move.length; i++) {
+        move[i].classList.remove('played')
+        move[i].style.backgroundColor = 'white'
+    }
+    for (let i = 0; i < 9; i++) {
+        playerOneMoves.pop()
+    }
+    for (let i = 0; i < 9; i++) {
+        playerTwoMoves.pop()
+    }
+    moveCounter = 0
+    const resultBox = document.getElementById('result')
+    if(divResult.contains(resultBox)) {
+        divResult.removeChild(resultBox)
+    }
+
+}
+
+const changeFirstPlayer = () => {
+    if (moveCounter === 0) {
+        if (playerOffset === 0) {
+            playerOffset = 1
+        } else if (playerOffset === 1) {
+            playerOffset = 0
+        }
+    }
+}
+
+document.querySelector('#change-first').addEventListener('click', changeFirstPlayer)
+
+document.querySelector('#reset').addEventListener('click', resetGame)
+
+document.querySelector('#new-game').addEventListener('click', newGame)
 
 
 // To understand how to use contains method: https://www.javascripttutorial.net/dom/css/check-if-an-element-contains-a-class/
@@ -105,6 +153,7 @@ const checkPlayed = () => {
     for (let i = 0; i < move.length; i++) {
         move[i].addEventListener('click', makeMove)
     }
+
 }
 // can add "once" after makeMove and the box can only be selected once - right now, have it in the style as a pointer-event.
 
