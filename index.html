@@ -5,25 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Document</title>
+    <title>Tic-Tac-Toe</title>
 </head>
 <body>
     <div id="game">
-        <div id="row-1">
-            <div id="box-1"></div>
-            <div id="box-2"></div>
-            <div id="box-3"></div>
+        <div id="column-1" class="column">
+            <div id="box-1" class="box" class="row-1"></div>
+            <div id="box-4" class="box" class="row-2"></div>
+            <div id="box-7" class="box" class="row-3"></div>
         </div>
-        <div id="row-2">
-            <div id="box-4"></div>
-            <div id="box-5"></div>
-            <div id="box-6"></div>
+        <div id="column-2" class="column">
+            <div id="box-2" class="box" class="row-1"></div>
+            <div id="box-5" class="box" class="row-2"></div>
+            <div id="box-8" class="box" class="row-3"></div>
         </div>
-        <div id="row-3">
-            <div id="box-7"></div>
-            <div id="box-8"></div>
-            <div id="box-9"></div>
+        <div id="columns-3" class="column">
+            <div id="box-3" class="box" class="row-1"></div>
+            <div id="box-6" class="box" class="row-2"></div>
+            <div id="box-9" class="box" class="row-3"></div>
         </div>
+    </div>
+    <div>
+        <button id="reset">Reset Game</button>
     </div>
     <script src="js/app.js"></script>
 </body>
