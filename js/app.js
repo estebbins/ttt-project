@@ -15,12 +15,13 @@ const playerTwoMoves = []
 let moveCounter = 0
 const winOne = ['box-1', 'box-2', 'box-3']
 const winTwo = ['box-4', 'box-5', 'box-6']
-const winThree = ['box7', 'box-8', 'box-9']
-const winFour = ['box7', 'box-8', 'box-9']
-const winFive = ['box7', 'box-8', 'box-9']
-const winSix
-const winSeven
-const winEight
+const winThree = ['box-7', 'box-8', 'box-9']
+const winFour = ['box-1', 'box-4', 'box-7']
+const winFive = ['box-2', 'box-5', 'box-8']
+const winSix = ['box-3', 'box-6', 'box-9']
+const winSeven = ['box-1', 'box-5', 'box-9']
+const winEight = ['box-3', 'box-5', 'box-7']
+const winConditions = [winOne, winTwo, winThree, winFour, winFive, winSix, winSeven, winEight]
 
 // put win conditions in an array and then loop over the array using the is in combo in check win.
 const isInCombo = (array1, array2) => {
@@ -29,10 +30,6 @@ const isInCombo = (array1, array2) => {
     }
     return array2.every(checkFor) 
 }
-
-
-console.log(isInCombo([1, 2, 3, 4, 5, 6, 7], [5, 8, 6]))
-
 // const isSubset = (array1, array2) =>
 //     array2.every((element) => array1.includes(element));
 
@@ -56,17 +53,25 @@ const makeMove = (event) => {
         event.target.classList.add('played')
         playerOneMoves.push(event.target.id)
     }
-    // checkWin()
+    checkWin()
 }
 
 // Researched array includes method: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
 
-// const checkWin = () => {
-//     if (playerOneMoves.includes('box-1') && playerOneMoves.includes('box-2') && playerOneMoves.includes('box-3')){
-//         console.log('player one wins!')
-//     } else if (playerOneMoves.includes('box-4'))
-//     }
-// }
+const checkWin = () => {
+    for(i = 0; i < winConditions.length; i++) {
+        if(isInCombo(playerOneMoves, winConditions[i]) === true) {
+            return console.log('Player One Wins!')
+        } else if (isInCombo(playerTwoMoves, winConditions[i]) === true) {
+            return console.log('Player Two Wins!')
+        }
+    }
+}
+    // if (playerOneMoves.includes('box-1') && playerOneMoves.includes('box-2') && playerOneMoves.includes('box-3')){
+    //     console.log('player one wins!')
+    // } else if (playerOneMoves.includes('box-4'))
+    // }
+
 
 
 
@@ -77,7 +82,7 @@ const checkPlayed = () => {
         move[i].addEventListener('click', makeMove)
     }
 }
-
+// can add "once" after makeMove and the box can only be selected once - right now, have it in the style as a pointer-event.
 
 checkPlayed()
 // move.addEventListener('click', makeMove)
