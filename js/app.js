@@ -10,6 +10,8 @@ const game = document.querySelector('#game')
 const playableBoxes = document.querySelectorAll('.box')
 const playerOneMarker = 'pink'
 const playerTwoMarker = 'green'
+const playerOneMoves = []
+const playerTwoMoves = []
 let moveCounter = 0
 
 // const switchPlayer = () =>
@@ -17,16 +19,26 @@ let moveCounter = 0
 const makeMove = (event) => {
     // add player1 class to the box
     // move[i].classList.add('player1')
+    // checkWin()
     moveCounter++
     if (moveCounter % 2 === 0) {
         event.target.style.backgroundColor = playerTwoMarker
         event.target.classList.add('played')
+        playerTwoMoves.push(event.target.id)
     } else {
         event.target.style.backgroundColor = playerOneMarker
         event.target.classList.add('played')
-        console.log(event.target.classList.contains('played'))
+        playerTwoMoves.push(event.target.id)
     }
 }
+
+// const checkWin = () => {
+//     for (let i = 0; i < move.length; i++) {
+//         if move[i].style.backgroundColor = playerOneMarker {
+
+//         }
+//     }
+// }
 
 
 
