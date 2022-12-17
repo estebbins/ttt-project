@@ -5,6 +5,9 @@
 // Need to switch symbols from player 1 to player 2
 // Evaluate if a player wins loses or ties
 
+// Researched how to compare arrays: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
+
+const divResult = document.querySelector('#messages')
 const move = document.querySelectorAll('.box')
 const game = document.querySelector('#game')
 const playableBoxes = document.querySelectorAll('.box')
@@ -30,14 +33,6 @@ const isInCombo = (array1, array2) => {
     }
     return array2.every(checkFor) 
 }
-// const isSubset = (array1, array2) =>
-//     array2.every((element) => array1.includes(element));
-
-// console.log(isSubset([1, 2, 3, 4, 5, 6, 7], [5, 7, 6])); // true
-// console.log(isSubset([1, 2, 3, 4, 5, 6, 7], [5, 8, 7])); // false
-
-
-// const switchPlayer = () =>
 
 const makeMove = (event) => {
     // add player1 class to the box
@@ -61,9 +56,9 @@ const makeMove = (event) => {
 const checkWin = () => {
     for(i = 0; i < winConditions.length; i++) {
         if(isInCombo(playerOneMoves, winConditions[i]) === true) {
-            return console.log('Player One Wins!')
+            return printWin(true)
         } else if (isInCombo(playerTwoMoves, winConditions[i]) === true) {
-            return console.log('Player Two Wins!')
+            return printWin(false)
         }
     }
 }
@@ -72,7 +67,19 @@ const checkWin = () => {
     // } else if (playerOneMoves.includes('box-4'))
     // }
 
+const printWin = (result) => {
+    const resultBox = document.createElement('div')
+    resultBox.id = 'result'
+    if (result === true) {
+        resultBox.textContent = "Player One Wins!"
+        resultBox.style.color = playerOneMarker
+    } else if (result === false) {
+        resultBox.textContent = "Player Two Wins!"
+        resultBox.style.color = playerTwoMarker
+    }
 
+    divResult.appendChild(resultBox)
+}
 
 
 // To understand how to use contains method: https://www.javascripttutorial.net/dom/css/check-if-an-element-contains-a-class/
@@ -86,3 +93,5 @@ const checkPlayed = () => {
 
 checkPlayed()
 // move.addEventListener('click', makeMove)
+
+// reset - remove played class, style background color back to default, reset counter to 0

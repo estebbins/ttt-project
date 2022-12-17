@@ -47,6 +47,10 @@ body {
 .played {
     pointer-events: none;
 }
+
+#result {
+    border: 3px solid purple;
+}
 /* JORDANS///// */
 
 /* #grid {
