@@ -3,27 +3,36 @@ body {
 }
 
 #game {
+    display: grid;
+    grid-template: repeat(3, 1fr)/repeat(3, 1fr);
     height: 450px;
     width: 456px;
     border: 5px solid #ff0299;
     border-radius: 5px;
-    display: flex;
     overflow: hidden;
     margin: 0 auto;
 }
 
 .column {
-    display: flex;
+
+    /* display: flex; */
     border: 1px solid #ff0299;
-    align-items: flex-start;
+    /* align-items: flex-start;
     align-content: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
 }
 
 .box {
     border: 1px solid #ff0299;
-    width: 148px;
-    height: 148px;
+    /* width: 148px;
+    height: 148px; */
+}
+
+#box-1 {
+    background-color: red;
+}
+#box-3 {
+    background-color: blue;
 }
 
 #reset {
