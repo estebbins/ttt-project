@@ -10,20 +10,33 @@ const game = document.querySelector('#game')
 const playableBoxes = document.querySelectorAll('.box')
 const playerOneMarker = 'pink'
 const playerTwoMarker = 'green'
+let moveCounter = 0
 
 // const switchPlayer = () =>
 
 const makeMove = (event) => {
     // add player1 class to the box
     // move[i].classList.add('player1')
-    event.target.style.backgroundColor = playerOneMarker
-
+    moveCounter++
+    if (moveCounter % 2 === 0) {
+        event.target.style.backgroundColor = playerTwoMarker
+        event.target.classList.add('played')
+    } else {
+        event.target.style.backgroundColor = playerOneMarker
+        event.target.classList.add('played')
+        console.log(event.target.classList.contains('played'))
+    }
 }
 
-for (let i = 0; i < move.length; i++) {
 
+
+// To understand how to use contains method: https://www.javascripttutorial.net/dom/css/check-if-an-element-contains-a-class/
+const checkPlayed = () => {
+    for (let i = 0; i < move.length; i++) {
         move[i].addEventListener('click', makeMove)
-
+    }
 }
 
+
+checkPlayed()
 // move.addEventListener('click', makeMove)

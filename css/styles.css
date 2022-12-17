@@ -43,6 +43,10 @@ body {
     border-radius: 5px;
     justify-content: center;
 }
+
+.played {
+    pointer-events: none;
+}
 /* JORDANS///// */
 
 /* #grid {
