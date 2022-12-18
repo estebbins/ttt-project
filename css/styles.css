@@ -4,8 +4,8 @@ body {
 }
 h1 {
     display: flex;
-    margin: 0 auto;
     justify-content: center;
+    margin: 0 auto;
     font-size: 50px;
     text-shadow: 1px 1px 2px #e6a176;
 }
@@ -28,19 +28,18 @@ h1 {
 }
 #stats {
     display: grid;
+    grid-template: 40px/2.5fr 1fr 2.5fr 1fr 1.5fr 1fr;
+    justify-content: center;
+    align-items: center;
     height: 40px;
     width: 456px;
     margin: 0 auto;
-    position: relative;
-    grid-template: 40px/2.5fr 1fr 2.5fr 1fr 1.5fr 1fr;
     padding: 1px 1px 1px 10px;
-    justify-content: center;
-    align-items: center;
     background-color: #fadcdc;
     border: 2px solid #e6a176;
     border-radius: 5px;
-    font-size: 16px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    font-size: 16px;
 }
 #pX-indicator {
     font-weight: bolder;
@@ -57,7 +56,6 @@ h1 {
 #new-game, #change-first {
     background-color: #82981e;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    justify-content: center;
     border-radius: 5px;
     font-family: 'Chivo Mono', monospace;
 }
@@ -69,12 +67,12 @@ h1 {
     grid-template: repeat(3, 1fr)/repeat(3, 1fr);
     height: 450px;
     width: 456px;
-    border: 5px solid #e6a176;
-    border-radius: 5px;
-    overflow: hidden;
     margin: 0 auto;
     background-color: #f4f2f2;
+    border: 5px solid #e6a176;
+    border-radius: 5px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    overflow: hidden;
 }
 .box {
     border: 1px solid #e6a176;
@@ -90,8 +88,8 @@ h1 {
     padding: 10px 50px 10px 50px;
     background-color: #a84e70;
     border-radius: 5px;
-    font-family: 'Chivo Mono', monospace;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    font-family: 'Chivo Mono', monospace;
 }
 .played {
     pointer-events: none;
