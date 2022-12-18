@@ -1,60 +1,50 @@
 body {
-    background-color: rgba(120, 70, 28, 0.5);
+    background-color: #00678ab2;
+    font-family: 'Chivo Mono', monospace;
 }
 h1 {
     display: flex;
     margin: 0 auto;
     justify-content: center;
-
+    font-size: 50px;
+    text-shadow: 1px 1px 2px #e6a176;
 }
-#game {
-    display: grid;
-    grid-template: repeat(3, 1fr)/repeat(3, 1fr);
-    height: 450px;
-    width: 456px;
-    border: 5px solid #ff0299;
-    border-radius: 5px;
-    overflow: hidden;
-    margin: 0 auto;
-    background-color: whitesmoke;
-}
-
-#stats {
-    display: grid;
-    height: 20px;
-    width: 600px;
-    margin: 0 auto;
-    grid-template: 20px/repeat(6, 1fr);
-    border: 1px solid #ff0299;
-}
-
 #messages {
     display: flex;
-    height: 100px;
-    width: 800px;
+    flex-direction: column;
+    min-height: 80px;
+    max-height: 250px;
+    max-width: 700px;
     margin: 0 auto;
+    font-size: 15px;
 }
-
-.column {
-
-    /* display: flex; */
-    border: 1px solid #ff0299;
-    /* align-items: flex-start;
+#result {
+    display: flex;
     align-content: center;
-    flex-wrap: wrap; */
+    justify-content: baseline;
+    margin: 0 auto;
+    font-size: 30px;
+    text-shadow: 1px 1px 2px #e6a176;
 }
-
-.box {
-    border: 1px solid #ff0299;
-    /* background-size: cover; */
-    background-repeat: no-repeat;
-    background-size: 90%;
-    background-position: center;
-
-    /* width: 148px;
-    height: 148px; */
+#stats {
+    display: grid;
+    height: 40px;
+    width: 456px;
+    margin: 0 auto;
+    position: relative;
+    grid-template: 40px/2.5fr 1fr 2.5fr 1fr 1.5fr 1fr;
+    padding: 1px 1px 1px 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: #fadcdc;
+    border: 2px solid #e6a176;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
-
+#pX-indicator {
+    font-weight: bolder;
+}
 #top-buttons {
     display: flex;
     justify-content: space-between;
@@ -62,55 +52,51 @@ h1 {
     width: 400px;
     margin: 10px auto;
     padding: 10px 50px 10px 50px;
+    border-radius: 5px;
 }
-
-
+#new-game, #change-first {
+    background-color: #82981e;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    justify-content: center;
+    border-radius: 5px;
+    font-family: 'Chivo Mono', monospace;
+}
+#new-game {
+    background-color: grey;
+}
+#game {
+    display: grid;
+    grid-template: repeat(3, 1fr)/repeat(3, 1fr);
+    height: 450px;
+    width: 456px;
+    border: 5px solid #e6a176;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0 auto;
+    background-color: #f4f2f2;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.box {
+    border: 1px solid #e6a176;
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
+}
 #reset {
     display: flex;
+    justify-content: center;
     margin: 10px auto;
     padding: 10px 50px 10px 50px;
-    background-color: #c85d72;
+    background-color: #a84e70;
     border-radius: 5px;
-    justify-content: center;
+    font-family: 'Chivo Mono', monospace;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
-
 .played {
     pointer-events: none;
 }
 
-#result {
-    border: 3px solid purple;
-}
+/* Researched button shadows and utilized example: https://www.w3schools.com/css/css3_buttons.asp  */
 
-#new-game, #change-first {
-    background-color: green;
-    background-color: green;
-    /* display: flex; */
-    justify-content: center;
-}
-
-#p1-indicator {
-    font-weight: bolder;
-}
-/* JORDANS///// */
-
-/* #grid {
-    border: 5px solid black;
-    width: 605px;
-    height: 605px;
-    margin-bottom: 20px;
-} */
-
-
-/* .box {
-    border: 1px solid black;
-    width: 200px;
-    height: 200px;
-    background-color: azure;
-    margin: 0 auto;
-    padding: none;
-}
-
-.row {
-    display: flex;
-} */
+/* Color theme inspiration from: https://www.google.com/url?sa=i&url=http%3A%2F%2Ftsitsul.in%2Fblog%2Fcoloropt%2F&psig=AOvVaw3W49rkxZEGqddVcP4itGCc&ust=1671464623246000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCJCAmpLBg_wCFQAAAAAdAAAAABAD */
