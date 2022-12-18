@@ -1,7 +1,12 @@
 body {
-    /* display: inline-block; */
+    background-color: rgba(120, 70, 28, 0.5);
 }
+h1 {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
 
+}
 #game {
     display: grid;
     grid-template: repeat(3, 1fr)/repeat(3, 1fr);
@@ -11,7 +16,23 @@ body {
     border-radius: 5px;
     overflow: hidden;
     margin: 0 auto;
-    background-color: blue;
+    background-color: whitesmoke;
+}
+
+#stats {
+    display: grid;
+    height: 20px;
+    width: 600px;
+    margin: 0 auto;
+    grid-template: 20px/repeat(6, 1fr);
+    border: 1px solid #ff0299;
+}
+
+#messages {
+    display: flex;
+    height: 100px;
+    width: 800px;
+    margin: 0 auto;
 }
 
 .column {
@@ -25,8 +46,22 @@ body {
 
 .box {
     border: 1px solid #ff0299;
+    /* background-size: cover; */
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position: center;
+
     /* width: 148px;
     height: 148px; */
+}
+
+#top-buttons {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    width: 400px;
+    margin: 10px auto;
+    padding: 10px 50px 10px 50px;
 }
 
 
@@ -45,6 +80,17 @@ body {
 
 #result {
     border: 3px solid purple;
+}
+
+#new-game, #change-first {
+    background-color: green;
+    background-color: green;
+    /* display: flex; */
+    justify-content: center;
+}
+
+#p1-indicator {
+    font-weight: bolder;
 }
 /* JORDANS///// */
 

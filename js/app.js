@@ -11,8 +11,10 @@ const divResult = document.querySelector('#messages')
 const move = document.querySelectorAll('.box')
 const game = document.querySelector('#game')
 const playableBoxes = document.querySelectorAll('.box')
-const playerOneMarker = 'pink'
-const playerTwoMarker = 'green'
+const newGameButton = document.querySelector('#new-game')
+
+const playerOneMarker = "url('https://cdn.pixabay.com/photo/2020/09/13/19/08/letter-x-5569116_960_720.png')"
+const playerTwoMarker = "url('https://cdn.pixabay.com/photo/2020/09/13/19/13/letter-5569138_960_720.png')"
 const playerOneMoves = []
 const playerTwoMoves = []
 let playerOneScore = 0
@@ -41,16 +43,22 @@ const isInCombo = (array1, array2) => {
 const makeMove = (event) => {
     // add player1 class to the box
     // move[i].classList.add('player1')
-
+    document.querySelector('#change-first').style.backgroundColor = 'grey'
+    newGameButton.style.backgroundColor = 'yellow'
     moveCounter++
     if (moveCounter % 2 === (0 + playerOffset)) {
-        event.target.style.backgroundColor = playerTwoMarker
+        event.target.style.backgroundImage = playerTwoMarker
+        event.target.style.backgroundSize = '80%'
         event.target.classList.add('played')
         playerTwoMoves.push(event.target.id)
+        document.querySelector('#p1-indicator').style.fontWeight = 'bolder'
+        document.querySelector('#p2-indicator').style.fontWeight = 'normal'
     } else {
-        event.target.style.backgroundColor = playerOneMarker
+        event.target.style.backgroundImage = playerOneMarker
         event.target.classList.add('played')
         playerOneMoves.push(event.target.id)
+        document.querySelector('#p2-indicator').style.fontWeight = 'bolder'
+        document.querySelector('#p1-indicator').style.fontWeight = 'normal'
     }
     printWin(moveCounter, checkWin())
 
@@ -79,19 +87,19 @@ const printWin = (moveCounter, result) => {
         resultBox.id = 'result'
         if (result === true) {
             resultBox.textContent = "Player One Wins!"
-            resultBox.style.color = playerOneMarker
-            gameOver()
+            resultBox.style.color = 'magenta'
             playerOneScore += 1
+            gameOver()
         } else if (result === false) {
             resultBox.textContent = "Player Two Wins!"
-            resultBox.style.color = playerTwoMarker
-            gameOver()
+            resultBox.style.color = 'blue'
             playerTwoScore += 1
+            gameOver()
         } else if (moveCounter === 9 && result === null) {
             resultBox.textContent = "It's a Tie!"
-            resultBox.style.color = playerTwoMarker
-            gameOver()
+            resultBox.style.color = 'red'
             tieScore += 1
+            gameOver()
         }
         divResult.appendChild(resultBox)
     }
@@ -101,6 +109,10 @@ const gameOver = () => {
     for (let i = 0; i < move.length; i++) {
         move[i].classList.add('played')
     }
+    document.querySelector('#player-one').textContent = `${playerOneScore}`
+    document.querySelector('#player-two').textContent = `${playerTwoScore}`
+    document.querySelector('#tie').textContent = `${tieScore}`
+    newGameButton.style.backgroundColor = 'green'
 }
 
 const resetGame = () => {
@@ -109,12 +121,17 @@ const resetGame = () => {
     playerTwoScore = 0
     tieScore = 0
     playerOffset = 0
+    document.querySelector('#player-one').textContent = `${playerOneScore}`
+    document.querySelector('#player-two').textContent = `${playerTwoScore}`
+    document.querySelector('#tie').textContent = `${tieScore}`
 }
 
 const newGame = () => {
+    newGameButton.style.backgroundColor = 'grey'
     for (let i = 0; i < move.length; i++) {
         move[i].classList.remove('played')
-        move[i].style.backgroundColor = 'white'
+        move[i].style.backgroundImage = 'none'
+        move[i].style.backgroundColor = 'pink'
     }
     for (let i = 0; i < 9; i++) {
         playerOneMoves.pop()
@@ -127,24 +144,38 @@ const newGame = () => {
     if(divResult.contains(resultBox)) {
         divResult.removeChild(resultBox)
     }
-
+    document.querySelector('#change-first').style.backgroundColor = 'green'
+    if (playerOffset === 0) {
+        document.querySelector('#p1-indicator').style.fontWeight = 'bolder'
+    } else {
+        document.querySelector('#p2-indicator').style.fontWeight = 'bolder'
+    }
 }
 
 const changeFirstPlayer = () => {
+
     if (moveCounter === 0) {
         if (playerOffset === 0) {
             playerOffset = 1
+            document.querySelector('#change-first').textContent = 'Change First to: Player 1'
+            document.querySelector('#p1-indicator').style.fontWeight = 'normal'
+            document.querySelector('#p2-indicator').style.fontWeight = 'bolder'
+
         } else if (playerOffset === 1) {
             playerOffset = 0
+            document.querySelector('#change-first').textContent = 'Change First to: Player 2'
+            document.querySelector('#p1-indicator').style.fontWeight = 'bolder'
+            document.querySelector('#p2-indicator').style.fontWeight = 'normal'
         }
     }
+    console.log(playerOffset)
 }
 
 document.querySelector('#change-first').addEventListener('click', changeFirstPlayer)
 
 document.querySelector('#reset').addEventListener('click', resetGame)
 
-document.querySelector('#new-game').addEventListener('click', newGame)
+newGameButton.addEventListener('click', newGame)
 
 
 // To understand how to use contains method: https://www.javascripttutorial.net/dom/css/check-if-an-element-contains-a-class/
