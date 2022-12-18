@@ -160,8 +160,10 @@ const newGame = () => {
     // Bold the first player based on whether there is an offset or not
     if (playerOffset === 0) {
         document.querySelector('#pX-indicator').style.fontWeight = 'bolder'
+        document.querySelector('#pO-indicator').style.fontWeight = 'normal'
     } else {
         document.querySelector('#pO-indicator').style.fontWeight = 'bolder'
+        document.querySelector('#pX-indicator').style.fontWeight = 'normal'
     }
 }
 
